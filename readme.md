@@ -1,4 +1,11 @@
 ## Daily Equity Price Prediction with XAI
 
-Wong Hong Ming 3035719686
-Soh Wai Heng 3035709502
+Group members:\
+Wong Hong Ming 3035719686\
+Soh Wai Heng 3035709502\
+
+## Setup:
+
+1. Install virtual environment by running the command "python3 -m venv venv"\
+2. Change to virtual environment by running the command "source venv/bin/activate"\
+3. Install required packages in the cirtual environment by running the command "pip install -r requirements.txt"\
