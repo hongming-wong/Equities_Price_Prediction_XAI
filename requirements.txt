@@ -1,1 +1,2 @@
 yfinance==0.1.74
+eodhd==1.0.7
