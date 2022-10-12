@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 import json
-from Functions.sp500 import sp500
+from Functions.SP500 import sp500
 from Functions.config import API_KEY
 
 load_dotenv()

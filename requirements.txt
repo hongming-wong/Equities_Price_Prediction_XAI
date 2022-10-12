@@ -1,3 +1,6 @@
 yfinance==0.1.74
+requests
+eod
+pandas
+scikit-learn
 eodhd==1.0.7
-python-dotenv==0.21.0
