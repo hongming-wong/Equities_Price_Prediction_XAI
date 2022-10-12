@@ -20,3 +20,4 @@ def get_eod_prices(symbol, start, end, period=50):
     except Exception as ex:
         print("Something wrong with the parameters given")
         print(ex)
+        

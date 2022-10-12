@@ -1,15 +1,21 @@
-import requests
-import os
-from dotenv import load_dotenv
-import json
+import pandas as pd
 from Functions.SP500 import sp500
 from Functions.config import API_KEY
+from eod import EodHistoricalData
 
-load_dotenv()
+client = EodHistoricalData(API_KEY)
 
 tickers = sp500.get_sp500_tickers()
 
-for stock in tickers:
-    response = requests.get(f"https://eodhistoricaldata.com/api/news?api_token={API_KEY}&s={stock}&from=2022-01-01&to=2022-10-01&offset=0&limit=1000")
+def get_news(ticker, start, end):
 
-    print(json.loads(response.content)[0])
+    try:
+        data = client.get_sentiment(s=ticker, from_=start, to=end)
+        df = pd.DataFrame(data)
+        return df
+
+    except Exception as ex:
+        print("Error getting the news")
+        print(ex)
+
+print(get_news('AAPL.US', '2020-01-05', '2020-10-10'))

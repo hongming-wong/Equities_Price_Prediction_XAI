@@ -2,3 +2,4 @@
 .env
 /Functions/config.py
 .idea
+__pycache__/
