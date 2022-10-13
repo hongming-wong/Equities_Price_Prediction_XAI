@@ -1,6 +1,8 @@
-yfinance==0.1.74
+yfinance
 requests
 eod
 pandas
 scikit-learn
-eodhd==1.0.7
+eodhd
+transformers
+tensorflow

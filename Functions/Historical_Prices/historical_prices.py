@@ -20,4 +20,28 @@ def get_eod_prices(symbol, start, end, period=50):
     except Exception as ex:
         print("Something wrong with the parameters given")
         print(ex)
-        
+
+
+def get_daily_price_changes(ticker, start, end, period=50):
+    """
+    Returns a dictionary of ticker to intraday price changes of a stock within a specific period in the format of { date : price changes }
+    """
+    try:
+        price_diff = {}
+
+        df = get_eod_prices(ticker, start, end, period)
+
+        for index, row in df.iterrows():
+            if index > 0:
+                price_diff[row['date']] = row['adjusted_close'] - df.loc[index-1]['adjusted_close']
+            else:
+                price_diff[row['date']] = 0
+
+        return price_diff
+
+    except Exception as ex:
+        print("Error computing the daily price difference of the stock")
+        print(ex)
+
+
+# print(get_daily_price_changes('MSFT.US', '2021-01-05', '2021-02-10'))
