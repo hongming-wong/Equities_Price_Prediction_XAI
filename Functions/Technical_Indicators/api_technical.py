@@ -28,7 +28,7 @@ ta_indicators = {
 }
 
 
-def get_technical_data(symbol, indicator, start, end, period=50, with_prices=False):
+def get_technical_data(symbol, indicator, start, end, with_prices=False, **kwargs):
     """
     Calls the api and returns a dataframe
     """
@@ -38,7 +38,7 @@ def get_technical_data(symbol, indicator, start, end, period=50, with_prices=Fal
                                             function=indicator.lower(),
                                             from_=start,
                                             to=end,
-                                            period=period)
+                                            **kwargs)
             df = pd.DataFrame(data)
         else:
             df = None
@@ -47,7 +47,7 @@ def get_technical_data(symbol, indicator, start, end, period=50, with_prices=Fal
                                                 function=i.lower(),
                                                 from_=start,
                                                 to=end,
-                                                period=period)
+                                                **kwargs)
                 if df is None:
                     df = pd.DataFrame(data)
                 else:
@@ -57,7 +57,7 @@ def get_technical_data(symbol, indicator, start, end, period=50, with_prices=Fal
             prices = historical_prices.get_eod_prices(symbol.upper(),
                                                       start,
                                                       end,
-                                                      period)
+                                                      **kwargs)
 
             df = df.merge(prices, on='date', how='left')
 

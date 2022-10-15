@@ -1,5 +1,6 @@
 /venv
 .env
 /Functions/config.py
+/Functions/csv_files
 .idea
 __pycache__/
