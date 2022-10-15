@@ -1,0 +1,2 @@
+from Functions.Historical_News import historical_news
+from Functions.Historical_Prices import historical_prices
