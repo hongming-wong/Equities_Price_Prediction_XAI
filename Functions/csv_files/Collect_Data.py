@@ -21,7 +21,7 @@ for index, tickers in enumerate(dev):
         print('Something wrong with ticker', tickers)
 
 dev_df = pd.concat(dev_df)
-dev_df.to_csv('csv_files/prices/dev.csv', index=False)
+dev_df.to_csv('prices/dev.csv', index=False)
 
 print("=== Downloading test set ===")
 for index, tickers in enumerate(test):
@@ -35,7 +35,7 @@ for index, tickers in enumerate(test):
         print('Something wrong with ticker', tickers)
 
 test_df = pd.concat(test_df)
-test_df.to_csv('csv_files/prices/test.csv', index=False)
+test_df.to_csv('prices/test.csv', index=False)
 
 print("=== Downloading train set ===")
 for index, tickers in enumerate(train):
@@ -49,5 +49,5 @@ for index, tickers in enumerate(train):
         print('Something wrong with ticker', tickers)
 
 train_df = pd.concat(train_df)
-train_df.to_csv('csv_files/prices/train.csv', index=False)
+train_df.to_csv('prices/train.csv', index=False)
 

@@ -71,5 +71,5 @@ def get_all_news(ticker, start, end, offset=0, limit=1000):
         print("Error getting the news to price changes")
         print(ex)
 
-print(get_all_news('MSFT.US', date(2021, 6, 1), date(2021, 9, 30)))
+# print(get_all_news('MSFT.US', date(2021, 6, 1), date(2021, 9, 30)))
 # print(get_news_by_ticker('MSFT.US', '2021-11-10', '2021-11-10'))
