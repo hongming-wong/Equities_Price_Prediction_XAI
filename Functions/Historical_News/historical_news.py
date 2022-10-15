@@ -1,5 +1,5 @@
 import pandas as pd
-from Functions.SP500 import sp500
+from Functions.sp500 import sp500
 from Functions.config import API_KEY
 from Functions.Historical_Prices import historical_prices
 from eod import EodHistoricalData
@@ -15,7 +15,8 @@ def get_news_by_ticker(ticker, start, end, offset=0, limit=1000):
     Get news data for a specific stock in the format of dataframe (columns = date, content)
     """
     try:
-        response = requests.get(f'https://eodhistoricaldata.com/api/news?api_token={API_KEY}&s={ticker}&from={start}&to={end}&offset={offset}&limit={limit}')
+        response = requests.get(
+            f'https://eodhistoricaldata.com/api/news?api_token={API_KEY}&s={ticker}&from={start}&to={end}&offset={offset}&limit={limit}')
         data = pd.read_json(response.text).loc[:, ['date', 'content']]
         data['date'] = pd.to_datetime(data['date'].dt.strftime('%Y-%m-%d'))
         return pd.DataFrame(data)

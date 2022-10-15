@@ -45,6 +45,3 @@ def get_daily_price_changes(ticker, start, end, period=50):
     except Exception as ex:
         print("Error computing the daily price difference of the stock")
         print(ex)
-
-
-# print(get_daily_price_changes('MSFT.US', '2021-01-05', '2021-02-10'))
