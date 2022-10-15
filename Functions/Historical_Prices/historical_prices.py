@@ -33,7 +33,7 @@ def get_daily_price_changes(ticker, start, end, period=50):
 
         for index, row in df.iterrows():
             if index > 0:
-                price_diff[row['date']] = row['adjusted_close'] - df.loc[index-1]['adjusted_close']
+                price_diff[row['date']] = row['adjusted_close'] - df.loc[index - 1]['adjusted_close']
             else:
                 price_diff[row['date']] = 0
 
@@ -42,6 +42,3 @@ def get_daily_price_changes(ticker, start, end, period=50):
     except Exception as ex:
         print("Error computing the daily price difference of the stock")
         print(ex)
-
-
-# print(get_daily_price_changes('MSFT.US', '2021-01-05', '2021-02-10'))
