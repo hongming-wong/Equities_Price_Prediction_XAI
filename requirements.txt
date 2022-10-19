@@ -6,3 +6,4 @@ scikit-learn
 eodhd
 transformers
 tensorflow
+keras
