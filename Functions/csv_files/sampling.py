@@ -7,8 +7,9 @@ from Functions.Technical_Indicators.api_technical import get_technical_data
 import os
 import numpy as np
 
-TI = ['sma', 'slope', 'rsi', 'volatility']
-RANGE_START = dt(1985, 1, 1).timestamp()
+TI = ['wma', 'slope', 'rsi', 'volatility']
+COLUMNS = ['date', 'adjusted_close', 'volume'] + TI
+RANGE_START = dt(1990, 1, 1).timestamp()
 RANGE_END = dt(2022, 10, 31).timestamp()
 
 
@@ -38,8 +39,8 @@ def collect_data(symbol, no_samples=25):
                                       start_date,
                                       end_date)
 
-            X = data.head(14)[['date', 'close'] + TI]
-            y = data.iloc[[15]].close.item()
+            X = data.head(14)[COLUMNS]
+            y = data.iloc[[15]]['adjusted_close'].item()
             X_samples.append(X.to_numpy())
             y_samples.append(y)
             counter += 1
@@ -85,8 +86,14 @@ def load_data(tickers):
 
 
 def sampling(tickers):
-    for ticker in tickers:
-        print(f"Collecting Data for {ticker}")
+    total = len(tickers)
+    """
+    As of 30th December 2022, tickers above WTW.US are not downloaded yet because we hit the API limit.
+    But we have 6675 training data so it should be sufficient. 
+    """
+    start = tickers.index("WTW.US")
+    for index, ticker in enumerate(tickers[start:]):
+        print(f"{index}/{total} - Collecting Data for {ticker}")
         X, y = collect_data(ticker)
         print(f"Saving Data for {ticker}")
         save_data(ticker, X, y)
@@ -96,6 +103,6 @@ if __name__ == "__main__":
     tickers = get_sp500_tickers(split=False)
     sampling(tickers)
 
-    # X, y = load_data(tickers)
-    # print(X.shape)
-    # print(y.shape)
+    # X, y = load_data(['AAPL.US'])
+    # print(X)
+    # print(y)
