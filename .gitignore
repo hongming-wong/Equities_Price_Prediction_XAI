@@ -1,5 +1,9 @@
 /venv
 .env
 /Functions/config.py
+/Functions/csv_files/prices
+/Functions/csv_files/technical_data
+/Functions/csv_files/sampling_data
 .idea
 __pycache__/
+.csv
