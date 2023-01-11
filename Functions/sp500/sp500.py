@@ -2,7 +2,7 @@ def get_sp500_tickers(split=False):
     """
     Return all the s&p 500 tickers
     """
-    tickers = ['AAPL', 'MSFT', 'AMZN', 'TSLA', 'GOOGL', 'GOOG', 'BRK.B', 'UNH', 'JNJ', 'XOM', 'META', 'JPM', 'NVDA',
+    tickers = ['AAPL', 'MSFT', 'AMZN', 'TSLA', 'GOOGL', 'GOOG', 'BRKB', 'UNH', 'JNJ', 'XOM', 'META', 'JPM', 'NVDA',
                'PG', 'V', 'HD', 'CVX', 'LLY', 'PFE', 'MA', 'ABBV', 'PEP', 'MRK', 'KO', 'BAC', 'COST', 'TMO', 'WMT',
                'AVGO', 'DIS', 'MCD', 'ABT', 'DHR', 'CSCO', 'ACN', 'VZ', 'NEE', 'WFC', 'BMY', 'CRM', 'TXN', 'LIN', 'COP',
                'CMCSA', 'ADBE', 'PM', 'QCOM', 'CVS', 'UNP', 'RTX', 'AMGN', 'LOW', 'UPS', 'HON', 'SCHW', 'T', 'ELV',
@@ -30,14 +30,14 @@ def get_sp500_tickers(split=False):
                'EQT', 'WAB', 'KEY', 'SJM', 'DGX', 'EXPD', 'CINF', 'ATO', 'TYL', 'BRO', 'EXPE', 'J', 'SWKS', 'ZBRA',
                'NTAP', 'SYF', 'TRMB', 'EVRG', 'WRB', 'MTCH', 'AVY', 'JKHY', 'FMC', 'FLT', 'HRL', 'LNT', 'OMC', 'JBHT',
                'AKAM', 'CTLT', 'COO', 'BBY', 'SEDG', 'CPT', 'IRM', 'POOL', 'CTXS', 'ETSY', 'INCY', 'UDR', 'CBOE',
-               'GRMN', 'LVS', 'TXT', 'NVR', 'LKQ', 'PEAK', 'LDOS', 'TER', 'BF.B', 'CHRW', 'IP', 'HWM', 'NLOK', 'NDSN',
+               'GRMN', 'LVS', 'TXT', 'NVR', 'LKQ', 'PEAK', 'LDOS', 'TER', 'CHRW', 'IP', 'HWM', 'NLOK', 'NDSN',
                'DPZ', 'SWK', 'KIM', 'HST', 'APA', 'GNRC', 'LW', 'ABMD', 'PTC', 'TECH', 'LYV', 'SNA', 'KMX', 'STX',
                'PKG', 'BXP', 'MAS', 'RE', 'UAL', 'VTRS', 'NI', 'WDC', 'IPG', 'NLSN', 'CRL', 'FOXA', 'L', 'MGM', 'AAP',
                'PARA', 'VFC', 'CPB', 'SBNY', 'CMA', 'NRG', 'TFX', 'GL', 'HSIC', 'TAP', 'CE', 'BIO', 'PHM', 'HII', 'EMN',
                'FFIV', 'HAS', 'CDAY', 'QRVO', 'RCL', 'RHI', 'JNPR', 'MKTX', 'REG', 'WRK', 'ALLE', 'BBWI', 'AIZ', 'AAL',
                'ROL', 'ZION', 'WHR', 'BWA', 'TPR', 'PNW', 'FBHS', 'CZR', 'CCL', 'LNC', 'PNR', 'LUMN', 'WYNN', 'SEE',
                'AOS', 'FRT', 'IVZ', 'XRAY', 'OGN', 'UHS', 'NWSA', 'BEN', 'DXC', 'NWL', 'ALK', 'NCLH', 'MHK', 'DVA',
-               'FOX', 'RL', 'VNO', 'DISH', 'NWS']
+               'FOX', 'RL', 'VNO', 'DISH', 'NWS', 'BFB']
 
 
 
