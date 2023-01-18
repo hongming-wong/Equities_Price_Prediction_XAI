@@ -21,27 +21,27 @@ def get_eod_prices(symbol, start, end):
         print("Something wrong with the parameters given")
         print(traceback.format_exc())
 
-#
-# def get_daily_price_changes(ticker, start, end, period=50):
-#     """
-#     Returns a dictionary of ticker to intraday price changes of a stock within a specific period in the format of { date : -1/0/1 } (0 = no data or price decreases, 1 = price increases)
-#     """
-#     try:
-#         price_diff = {}
-#
-#         df = get_eod_prices(ticker, start, end, period)
-#
-#         for index, row in df.iterrows():
-#             if index > 0:
-#                 if row['adjusted_close'] - df.loc[index-1]['adjusted_close'] > 0:
-#                     price_diff[row['date']] = 1
-#                 else:
-#                     price_diff[row['date']] = 0
-#             else:
-#                 price_diff[row['date']] = 0
-#
-#         return price_diff
-#
-#     except Exception as ex:
-#         print("Error computing the daily price difference of the stock")
-#         print(ex)
+
+def get_daily_price_changes(ticker, start, end, period=50):
+    """
+    Returns a dictionary of ticker to intraday price changes of a stock within a specific period in the format of { date : -1/0/1 } (0 = no data or price decreases, 1 = price increases)
+    """
+    try:
+        price_diff = {}
+
+        df = get_eod_prices(ticker, start, end)
+
+        for index, row in df.iterrows():
+            if index > 0:
+                if row['adjusted_close'] - df.loc[index-1]['adjusted_close'] >= 0:
+                    price_diff[row['date']] = 1
+                else:
+                    price_diff[row['date']] = 0
+            else:
+                price_diff[row['date']] = 0
+
+        return price_diff
+
+    except Exception as ex:
+        print("Error computing the daily price difference of the stock")
+        print(ex)
