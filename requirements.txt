@@ -8,3 +8,5 @@ transformers
 keras
 seaborn
 tensorflow
+pandas_ta
+jupyterlab

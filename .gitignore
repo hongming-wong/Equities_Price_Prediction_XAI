@@ -4,6 +4,8 @@
 /Functions/csv_files/prices
 /Functions/csv_files/technical_data
 /Functions/csv_files/sampling_data
+/Functions/csv_files/sampling_data_2
+/Functions/csv_files/sampling_data_3
 .idea
 __pycache__/
 .csv
