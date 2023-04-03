@@ -28,7 +28,7 @@ We use the decision tree to interpret our model
 class Explainer:
     def __init__(self, model,
                  data_point: np.array,
-                 surrogate_model):
+                 surrogate_model=None):
         self.model = model
         self.data_point = data_point
         # self.output = model.predict(np.array([data_point]))
@@ -39,14 +39,18 @@ class Explainer:
         data_points = np.array(self.all_datapoints)
         labels = self.model.predict(data_points)
 
-        data = None
+        data = data_points
         for f in pipeline:
-            data = f(data_points)
+            data = f(data)
+
+        if self.surrogate_model is None:
+            self.surrogate_model = sklearn.tree.DecisionTreeClassifier(
+                max_depth=10, min_samples_split=5, random_state=0)
         self.surrogate_model.fit(data, labels)
 
     def generate_neigbouring_datapoints(self):
         functions = [self._turn_off, self._add_noise, self._mean]
-        generated_datapoints = []
+        generated_datapoints = [self.data_point]
 
         cols = self.data_point.shape[1]
 
