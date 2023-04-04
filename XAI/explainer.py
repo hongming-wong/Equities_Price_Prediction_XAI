@@ -4,6 +4,7 @@ import numpy.typing as npt
 from sklearn.pipeline import Pipeline
 import sklearn.tree
 import random
+from sklearn.metrics import mean_squared_error
 """
 The core idea:
 We want to explain which features are the most important in determining the outcome of the model.
@@ -28,7 +29,7 @@ We use the decision tree to interpret our model
 class Explainer:
     def __init__(self, model,
                  data_point: np.array,
-                 surrogate_model=None):
+                 surrogate_model):
         self.model = model
         self.data_point = data_point
         # self.output = model.predict(np.array([data_point]))
@@ -43,10 +44,13 @@ class Explainer:
         for f in pipeline:
             data = f(data)
 
-        if self.surrogate_model is None:
-            self.surrogate_model = sklearn.tree.DecisionTreeClassifier(
-                max_depth=10, min_samples_split=5, random_state=0)
         self.surrogate_model.fit(data, labels)
+        self._surrogate_model_performance(data, labels)
+
+    def _surrogate_model_performance(self, data, labels):
+        output = self.surrogate_model.predict(data)
+        print("The mean squared error is: ",
+              mean_squared_error(labels, output))
 
     def generate_neigbouring_datapoints(self):
         functions = [self._turn_off, self._add_noise, self._mean]
