@@ -26,9 +26,10 @@ class Stock:
         dataframe = self.retrieve_prices_and_volume()
         dataframe = self.combine_3M_bills(dataframe)
         dataframe = self.combine_oil_prices(dataframe)
+        dataframe = self.combine_SPX(dataframe)
         for p in [7, 14]:
             dataframe = self.calc_rolling_volatility(dataframe, p)
-            dataframe = self.calc_rolling_ewm(dataframe, p)
+            dataframe = self.calc_rolling_ema(dataframe, p)
             dataframe = self.calc_rolling_rsi(dataframe, p)
             dataframe = self.calc_rolling_slope(dataframe, p)
 
@@ -68,10 +69,10 @@ class Stock:
             period).apply(slope, raw=False)
         return df
 
-    def calc_rolling_ewm(self, dataframe, period):
+    def calc_rolling_ema(self, dataframe, period):
         # https://corporatefinanceinstitute.com/resources/capital-markets/exponential-moving-average-ema/
         df = dataframe.copy()
-        df[f"{period}-day EWM"] = df['close'].ewm(
+        df[f"{period}-day EMA"] = df['close'].ewm(
             span=period, min_periods=0, adjust=False, ignore_na=False).mean()
         return df
 
@@ -90,6 +91,15 @@ class Stock:
         wti = pd.read_csv(self.filepath + "WTI.csv")
         df = dataframe.copy()
         df = df.merge(wti, on='date', how='left')
+        return df
+
+    def combine_SPX(self, dataframe):
+        tmp = pd.read_excel(self.filepath + "S&P.xlsx")
+        spx = tmp[['date', 'price']]
+        spx['date'] = spx.date.astype(str)
+        spx.columns = ['date', 'SPX']
+        df = dataframe.copy()
+        df = df.merge(spx, on='date', how='left')
         return df
 
 
