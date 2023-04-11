@@ -58,11 +58,12 @@ def get_all_news_by_ticker(ticker, start, end, offset=0, limit=1000):
     """
     try:
         df = pd.DataFrame(columns=['date', 'content'])
-        for single_date in daterange(start, end):
-            cur = single_date.strftime("%Y-%m-%d")
-            new_df = get_news_by_ticker(ticker, cur, cur, offset, limit)
-            dup_df = df.append(new_df, ignore_index=True)
-            df = dup_df
+        # for single_date in daterange(start, end):
+        start = start.strftime("%Y-%m-%d")
+        end = end.strftime("%Y-%m-%d")
+        new_df = get_news_by_ticker(ticker, start, end, offset, limit)
+        dup_df = df.append(new_df, ignore_index=True)
+        df = dup_df
         return df
 
     except Exception as ex:
