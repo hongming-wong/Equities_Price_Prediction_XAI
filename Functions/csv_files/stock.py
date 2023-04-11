@@ -10,7 +10,7 @@ import pandas_ta as ta
 
 
 class Stock:
-    def __init__(self, symbol, start_date="1985-01-01", end_date="2023-01-31", filepath="csv_files/"):
+    def __init__(self, symbol, start_date="1985-01-01", end_date="2023-03-31", filepath="csv_files/"):
         self.symbol = symbol
         self.start_date = start_date
         self.end_date = end_date
