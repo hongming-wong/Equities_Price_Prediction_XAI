@@ -1,4 +1,4 @@
-## Daily Equity Price Prediction with XAI
+## Final Year Project: Equity Price Prediction with XAI
 
 Group members:\
 Wong Hong Ming 3035719686\
